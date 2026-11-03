@@ -1,0 +1,69 @@
+:root {
+    --background-light-1: #222;
+    --background-light-2: #333;
+    --background-light-3: #444;
+    --background-dark: #0c0c0c;
+    --text-color: #ffffff;
+    --text-color-hover: #d1d1d1;
+    background-color: var(--background-light-1);
+}
+
+body {
+    background: linear-gradient(180deg, var(--background-light-1), var(--background-dark));
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/* Sitemap Section */
+.sitemap-section {
+    font-size: 2rem;
+    padding: 10px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.alphabet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.alphabet-item {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--background-light-3);
+}
+
+.alphabet {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.submenu {
+    list-style: initial; /* Dot for each list item */
+    padding-left: 50px;
+}
+
+.submenu li {
+    margin-bottom: 8px;
+}
+
+.submenu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.submenu a:hover {
+    color: var(--text-color-hover);
+    text-decoration: underline;
+}

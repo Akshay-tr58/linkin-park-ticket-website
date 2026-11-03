@@ -1,0 +1,387 @@
+/* This is a test for color variables */
+:root {
+    --background-light-1: #222;
+    --background-light-2: #333;
+    --background-light-3: #444;
+    --background-dark: #0c0c0c;
+    --text-color: #ffffff;
+    --text-color-hover: #d1d1d1;
+    background-color: var(--background-light-1);
+}
+
+/* Tested Light and Dark Mode which is not implemented yet (probably will not be implemented)
+:root[dark]{
+    --background-light-1: #222;
+    --background-light-2: #333;
+    --background-light-3: #444;
+    --text-color: #ffffff;
+    --text-color-hover: #d1d1d1;
+    background-color: var(--background-light-1);
+}
+
+:root[light]{
+    --background-light-1: #ffffff;
+    --background-light-2: #f0f0f0;
+    --background-light-3: #e0e0e0;
+    --text-color: #000000;
+    --text-color-hover: #4a4a4a;
+    background-color: var(--background-light-1);
+}
+*/
+body {
+    /* background-color: #222; /* other colors: 333, 252525 */
+    background: linear-gradient(180deg, var(--background-light-1), var(--background-dark));
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+/*
+    Image and branding section (Tickets)
+*/
+
+.branding {
+    color: #ffffff;
+}
+
+img.branding, source.branding {
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 60px);
+    object-fit: cover;
+    object-position: center top; /* Horizontal center, top-aligned vertically */
+    border-bottom: black solid 5px;
+}
+
+.branding h2 {
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    text-shadow: black 4px 4px 6px;
+    margin: 0;
+}
+
+.branding ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap; /* Stopping the Text from wraping */
+    justify-content: center;
+    backdrop-filter: blur(10px); /* Apply blur to the background */
+    padding: 20px 15px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    text-align: center;
+    border-radius: 10px; /* Smooth rounded edges no color */
+    box-shadow: black 0 5px 10px;
+}
+
+.branding li {
+    display: inline;
+    margin: 15px 5px;
+}
+
+.branding a {
+    text-decoration: none;
+    color: #ffffff; /* White text on Links */
+    background-color: rgba(255, 255, 255, 0.15); /* Semi transparent button background that is brighter than the background box */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Small border */
+    padding: 10px 20px;
+    border-radius: 5px; /* No color or so specified just smooth rounded edges */
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.branding a:hover {
+    color: #000000; /* Switch to dark text on hover */
+    background-color: rgba(255, 255, 255, 0.9); /* Lighten background */
+    border-color: #ffffff; /* Brighter border */
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5); /* Highlighted shadow */
+}
+
+@media screen and (max-height: 800px) {
+    .branding h2 {
+        font-size: 3rem;
+        top: 25%;
+        left: 50%;
+    }
+
+    .branding ul {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+    }
+
+    .branding a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    .branding h2 {
+        font-size: 2rem;
+        top: 30%;
+        left: 50%;
+    }
+}
+
+.section-branding {
+    color: var(--text-color);
+    text-shadow: #222 2px 2px 2px;
+}
+
+/*
+    Members section
+*/
+
+.members {
+    margin: 0;
+    padding: 0;
+}
+
+.members h2 {
+    text-align: center;
+}
+
+/* Member List styling */
+.member-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+}
+
+/* Member card container */
+.member-list li {
+    position: relative;
+    width: 280px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 2px solid var(--text-color);
+}
+
+/* Member image styling */
+.member-list li img {
+    width: 100%; /* Images scale with the card width */
+    height: 100%; /* Images scale with the card height */
+    object-fit: cover; /* Ensures images fill their container proportionally */
+    display: block; /* Removes extra space caused by inline-block behavior */
+}
+
+@media (max-width: 280px) {
+    .member-list li {
+        width: 90%; /* Dynamically adjust width */
+        max-width: 300px;
+        height: auto;
+    }
+
+    .member-list li img {
+        height: auto; /* Allow images to adjust dynamically */
+    }
+}
+
+/* Hover effect: Add white border, zoom effect, and shadow */
+.member-list li:hover,
+.member-list li:has(a:focus) { /* has is for selecting the parent of the focused element */
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4);
+    border: 2px solid var(--text-color);
+}
+
+/* Dim image and zoom slightly on hover */
+.member-list li:hover img,
+.member-list li:has(a:focus) {
+    opacity: 0.3;
+    transform: scale(1.03);
+}
+
+/* Overlay visibility on focus */
+.member-list li:hover .info,
+.member-list a:focus .info{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.03);
+}
+
+/* Overlay styling */
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Overlay title styling */
+.info h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Overlay specialty styling */
+.info p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .member-list {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .member-list {
+        flex-direction: column; /* Stack all cards vertically on very small screens */
+        align-items: center; /* Center the stacked cards */
+    }
+    .member-list li img {
+        width: auto;
+        height: 100%;
+    }
+}
+
+/*
+    Music section
+*/
+
+.music {
+    margin: 0;
+    padding: 0;
+}
+
+.music .music-container { /* The div encapsulates the whole li element for the music video */
+    display: flex;
+    background-color: var(--background-light-3);
+    border-radius: 15px;
+    box-shadow: black 0 2px 5px;
+    width: 80%;
+    transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 900px) {
+    .music .music-container {
+        width: 95%;
+    }
+}
+
+.music .music-container:hover {
+    background-color: var(--background-light-3);
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.music ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.music li {
+    margin: 25px 25px 75px 25px; /* Top, right, bottom, left */
+    display: flex;
+}
+
+.music .text-content {
+    color: var(--text-color);
+}
+
+.music .text-content h3 {
+    text-shadow: black 2px 2px 4px; /* Slight shadow for text next to the video to make it more visible */
+}
+
+.music iframe {
+    border: none;
+    border-radius: 15px;
+    box-shadow: black 0 2px 5px;
+}
+
+.music li:nth-child(odd) { /* Every nth child of an li element that is odd (1,3,5,7) */
+    justify-content: flex-start; /* Align content to the left */
+    margin-right: auto; /* Push the item to the left */
+    margin-left: 25px; /* Ensure no extra space on the left */
+    padding-right: 10px;
+}
+
+.music li:nth-child(even) .music-container { /* Every nth child of an li element that is even (2,4,6,8) */
+    /* justify-content: flex-end; /* Align content to the right (right now obsolete because I want the order reversed) */
+    flex-direction: row-reverse; /* Swap the order of iframe and text */
+    margin-left: auto; /* Push the item to the right */
+    margin-right: 25px; /* Ensure no extra space on the right */
+}
+
+.music li:nth-child(even) .text-content { /* The text content of the even li element needs to be spaced and placed different */
+    text-align: right;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+
+.music .text-content {
+    padding-left: 15px;
+}
+
+.music h2 {
+    text-align: center;
+}
+
+@media screen and (max-width: 650px) {
+    .music .music-container {
+        width: 100%;
+    }
+
+    .music li:nth-child(odd) .music-container { /* Need to be Precise Otherwise it gets Ignored */
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .music li:nth-child(even) .music-container { /* Need to be Precise Otherwise it gets Ignored */
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .music iframe {
+        width: 100%;
+    }
+
+    .music .text-content {
+        text-align: center !important; /* Center text for better presentation on small screens */
+        padding: 2px; /* Add some padding for spacing */
+    }
+
+    .music li {
+        justify-content: center; /* Center the entire list item */
+        margin: 10px 25px 10px 25px; /* Top, right, bottom, left */
+        width: calc(100% - 50px); /* Consistent width because of the margin 25+25 */
+    }
+}
